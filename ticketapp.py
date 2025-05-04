@@ -1,6 +1,8 @@
 import streamlit as st
 import datetime
 import pytz
+import qrcode
+from io import BytesIO
 
 # File-based ticket number generator
 def generate_ticket_no():
@@ -53,10 +55,23 @@ def get_ticket_text(start_index, end_index, num_passengers, places, manual_fares
     lines.append(disclaimer.center(width))
     lines.append("=" * width)
 
-    return "\n".join(lines)
+    ticket_text = "\n".join(lines)
+    return ticket_text, ticket_no, start_point, end_point, num_passengers, fare_per_person, total_fare, time_str
+
+# Generate QR code image from text
+def generate_qr_code(data):
+    qr = qrcode.QRCode(
+        version=1,
+        box_size=10,
+        border=4
+    )
+    qr.add_data(data)
+    qr.make(fit=True)
+    img = qr.make_image(fill='black', back_color='white')
+    return img
 
 # UI starts here
-st.title("Bus Ticket Generator")
+st.title("🚌 Bus Ticket Generator with QR Code")
 
 places = ["தேனி", "கனாவிலக்கு", "ஆண்டிபட்டி", "உசிலம்பட்டி", "செக்கானூரணி", "மதுரை"]
 manual_fares = {
@@ -74,5 +89,24 @@ end_index = st.selectbox("End Stop", range(1, len(places)+1), format_func=lambda
 num_passengers = st.number_input("Number of Passengers", min_value=1, step=1, value=1)
 
 if st.button("🎟️ Generate Ticket"):
-    ticket = get_ticket_text(start_index, end_index, num_passengers, places, manual_fares)
-    st.text(ticket)
+    ticket_text, ticket_no, start_point, end_point, qty, rate, total, time_str = get_ticket_text(
+        start_index, end_index, num_passengers, places, manual_fares)
+    
+    st.text(ticket_text)
+    
+    # Prepare QR code data string (could be JSON or formatted text)
+    qr_data = (
+        f"TICKET NO: {ticket_no}\n"
+        f"DATE: {time_str}\n"
+        f"FROM: {start_point}\n"
+        f"TO: {end_point}\n"
+        f"QTY: {qty}\n"
+        f"RATE: Rs.{rate}\n"
+        f"TOTAL: Rs.{total}"
+    )
+    qr_img = generate_qr_code(qr_data)
+    
+    # Display QR code
+    buf = BytesIO()
+    qr_img.save(buf)
+    st.image(buf, caption="Scan QR code for ticket details", use_column_width=False)
