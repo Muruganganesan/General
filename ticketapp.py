@@ -56,7 +56,7 @@ def get_ticket_text(start_index, end_index, num_passengers, places, manual_fares
     return "\n".join(lines)
 
 # UI starts here
-st.title("🚌 பஸ் டிக்கெட் ஜெனரேட்டர்")
+st.title("🚌 Bus Ticket Generator")
 
 places = ["தேனி", "கனாவிலக்கு", "ஆண்டிபட்டி", "உசிலம்பட்டி", "செக்கானூரணி", "மதுரை"]
 manual_fares = {
