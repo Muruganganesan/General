@@ -39,7 +39,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("🧵 Fabric GSM & Cost Calculator - Murugan Ganesan")
+st.title("🧵 Fabric GSM & Cost Calculator")
 
 # 🧮 Sort Details in one row (without + - and default float)
 st.subheader("🧮 Sort Details")
@@ -109,3 +109,5 @@ if apply:
          
     except ZeroDivisionError:
         st.error("Please enter non-zero values for Warp and Weft Count to avoid division by zero.")
+        st.markdown("---")
+        st.caption("Developed by Murugan Ganesan")
