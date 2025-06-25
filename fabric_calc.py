@@ -99,7 +99,8 @@ if apply:
         st.write(f"🔸 Weft Weight : {weft_weight:.3f}")
         st.markdown(f"<div class='output-box'>FABRIC WT : <span class='red-val'>{fabric_weight:.3f}g</span></div>", unsafe_allow_html=True)
         st.markdown(f"<div class='output-box'>GSM : <span class='red-val'>{gsm:.3f}g</span></div>", unsafe_allow_html=True)
-        
+        st.markdown("---")
+        st.caption("Developed by Murugan Ganesan")
 
         st.write(f"🔹 Warp Rate : ₹{warp_rate:.2f}")
         st.write(f"🔹 Weft Rate : ₹{weft_rate:.2f}")
@@ -109,5 +110,4 @@ if apply:
          
     except ZeroDivisionError:
         st.error("Please enter non-zero values for Warp and Weft Count to avoid division by zero.")
-        st.markdown("---")
-        st.caption("Developed by Murugan Ganesan")
+        
