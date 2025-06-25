@@ -75,12 +75,17 @@ apply = st.button("APPLY")
 
 # Calculations
 if apply:
-    waste_percent = 10
-    waste_multiplier = 1 + (waste_percent / 100)
+    warp_waste_percent = 8
+    weft_waste_percent = 2
+    warp_waste_multiplier = 1 + (warp_waste_percent / 100)
+    weft_waste_multiplier = 1 + (weft_waste_percent / 100)
 
     try:
-        warp_weight = (epi * fabric_width) / (1693 * warp_count) * waste_multiplier
-        weft_weight = (ppi * (fabric_width + 4)) / (1693 * weft_count) * waste_multiplier
+        warp_weight = (epi * fabric_width) / (1693 * warp_count) * warp_waste_multiplier
+        weft_weight = (ppi * (fabric_width + 4)) / (1693 * weft_count) * weft_waste_multiplier
+
+
+    
         fabric_weight = warp_weight + weft_weight
         gsm = (fabric_weight * 39.37) / fabric_width
 
