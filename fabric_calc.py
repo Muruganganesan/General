@@ -39,7 +39,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("🧵 Fabric GSM & Cost Calculator")
+st.title("🧵 Fabric GSM & Cost Calculator - Murugan Ganesan")
 
 # 🧮 Sort Details in one row (without + - and default float)
 st.subheader("🧮 Sort Details")
@@ -99,12 +99,13 @@ if apply:
         st.write(f"🔸 Weft Weight : {weft_weight:.3f}")
         st.markdown(f"<div class='output-box'>FABRIC WT : <span class='red-val'>{fabric_weight:.3f}g</span></div>", unsafe_allow_html=True)
         st.markdown(f"<div class='output-box'>GSM : <span class='red-val'>{gsm:.3f}g</span></div>", unsafe_allow_html=True)
+        
 
         st.write(f"🔹 Warp Rate : ₹{warp_rate:.2f}")
         st.write(f"🔹 Weft Rate : ₹{weft_rate:.2f}")
         st.write(f"🔹 Pick Rate : ₹{pick_total:.2f}")
         st.write(f"🔹 Sizing Rate : ₹{sizing_total:.2f}")
         st.markdown(f"<div class='output-box'>FABRIC RATE : <span class='red-val'>Rs:{fabric_rate:.2f}/-</span></div>", unsafe_allow_html=True)
-
+         
     except ZeroDivisionError:
         st.error("Please enter non-zero values for Warp and Weft Count to avoid division by zero.")
