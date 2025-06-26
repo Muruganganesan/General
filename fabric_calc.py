@@ -110,7 +110,7 @@ if apply:
         st.write(f"🔹 Weft Rate : ₹{weft_rate:.2f}")
         st.write(f"🔹 Pick Rate : ₹{pick_total:.2f}")
         st.write(f"🔹 Sizing Rate : ₹{sizing_total:.2f}")
-        st.markdown(f"<div class='output-box'>FABRIC RATE ₹ : <span class='red-val'>Rs:{fabric_rate:.2f}/-</span></div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='output-box'>FABRIC RATE : <span class='red-val'>Rs: ₹ {fabric_rate:.2f}/-</span></div>", unsafe_allow_html=True)
         st.markdown("---")
         st.caption("Developed by Murugan Ganesan") 
     except ZeroDivisionError:
