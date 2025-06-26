@@ -98,7 +98,7 @@ if apply:
 
         # Display
         st.markdown("---")
-        st.subheader("📤 Output Details")
+        st.subheader("Fabric weight & Rate")
 
         st.write(f"🔸 Warp Weight : {warp_weight:.3f}")
         st.write(f"🔸 Weft Weight : {weft_weight:.3f}")
