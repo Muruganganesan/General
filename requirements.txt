@@ -5,3 +5,6 @@ wordcloud
 matplotlib
 seaborn
 qrcode[pil]
+pymupdf
+google-generativeai
+streamlit-lottie
